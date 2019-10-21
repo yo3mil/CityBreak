@@ -1,0 +1,30 @@
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	// defines what 1 rem is
+	font-size: 62.5%;
+}
+
+body {
+	box-sizing: border-box;
+	height: 100vh;
+	width: auto;
+	background-image: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)), url(../img/bg.jpeg);
+	background-size: cover;
+	background-position-x: 20%;
+	background-attachment: fixed;
+
+	display: flex;
+	flex-direction: column;
+}
+::selection {
+	background-color: #d3d3d3 ;
+	color: #d3d3d3;
+}
+

@@ -1,0 +1,24 @@
+.nav {
+
+    width: 75%;
+    max-width: 40rem;
+    flex: 0 0 15%;
+    //background-color: orange;
+    margin-bottom: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    &__link {
+        cursor: pointer;
+    }
+    &__icon {
+        height: 5rem;
+        width: 5rem;
+        fill: #F0F0F0;
+        cursor: pointer;
+    }
+}
+.right {
+    margin-left: auto;
+}

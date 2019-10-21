@@ -1,0 +1,45 @@
+.circle {
+    height: 30rem;
+    width: 30rem;
+    max-height: 30rem;
+    flex: 0 0 75%;
+    background-color: rgba(0, 0, 0, .45);
+    border: 1.2px solid #fff;
+    margin-bottom: 4rem;
+    border-radius: 100%;
+    backdrop-filter: blur(2.5px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__icon {
+        height: 3rem;
+        width: 3rem;
+        fill: #f0f0f0;
+        padding:0 .6rem;
+    }
+    &__data {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        &-header {
+            font-size: 1.2rem;
+            margin-bottom: -1rem;
+        }
+        &-temp {
+            font-size: 7rem;
+        }
+        &-location {
+            font-size: 1.8rem;
+            margin-top: -1.5rem;
+        }
+    }
+
+
+
+
+
+
+}

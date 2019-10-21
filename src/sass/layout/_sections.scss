@@ -1,0 +1,43 @@
+.landing,
+.info,
+.list {
+    height: 100%;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing {
+    //display: none;
+}
+.info {
+    display: none;
+
+    &__text {
+        margin-bottom: 3rem;
+        margin-top: 4rem;
+        max-width: 400px;
+        flex: 0 0 30%;
+    }
+
+    &__credits {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+        margin-bottom: 4rem;
+        & a {
+            text-decoration: none;
+            letter-spacing: 1px;
+            color: #dadada;
+            font-size: 1.8rem;
+        }
+    }
+}
+
+.list {
+    display: none;
+}

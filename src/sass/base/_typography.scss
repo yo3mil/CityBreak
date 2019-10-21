@@ -1,0 +1,35 @@
+//font-family: 'Montserrat', sans-serif;
+//font-family: 'Indie Flower', cursive;
+
+
+body {
+	font-family: "Lato", sens-sarif;
+	font-weight: 400;
+	/*font-size: 16px;*/
+	line-height: 1.7;
+	color: $color-grey;
+	padding: 3rem;
+}
+
+h1 {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 5.5rem;
+	margin-top: 2rem;
+}
+h2 {
+	font-family: 'Indie Flower', cursive;
+	font-size: 2.5rem;
+	margin-top: -2rem;
+}
+h3 {
+	text-transform: uppercase;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.2rem;
+}
+p {
+	font-size: 1.3rem;
+	color: #ffffff;
+	text-align: center;
+	letter-spacing: .8px;
+	backdrop-filter: blur(1px);
+}

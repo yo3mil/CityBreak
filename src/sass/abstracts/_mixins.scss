@@ -1,0 +1,7 @@
+@mixin clearfix {
+    &::after {
+        content: ""; // it must have a content
+        display: table;
+        clear: both; //clears floats
+    }
+}

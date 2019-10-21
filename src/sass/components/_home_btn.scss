@@ -1,0 +1,14 @@
+.home-btn {
+    flex: 0 0 20%;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    &__icon {
+        width: 5rem;
+        height: 5rem;
+        fill: #f0f0f0;
+    }
+}
