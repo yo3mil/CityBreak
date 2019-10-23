@@ -13,7 +13,7 @@ const onLoad = async () => {
 
     if(cords) {
         // new object added to the state
-        state.current = new model.Current(cords);
+        state.current = new model.Search(cords);
 
         // prepare ui for changes
         view.clearFields();
@@ -29,7 +29,7 @@ const onLoad = async () => {
             view.renderCurrent(state.current.result);
             
         } catch(error) {
-            alert('something went wrong with search !');
+            alert('something went wrong with the search !');
             console.log(error); 
         }
     }
@@ -51,14 +51,17 @@ window.addEventListener("load", () => {
     
 });
 
-// numArray.sort((a, b) => a - b); // For ascending sort
-// numArray.sort((a, b) => b - a); // For descending sort
+////////////////////////////////////////////////////////////////////////////////
+// List view CONTROLLER
+const list = async () => {
 
-const arr = [2, 1, 3, 5, 4];
-console.log(arr);
 
-const ascARR = arr.sort((a, b) => a - b);
-console.log(ascARR);
+};
+base.elements.listIcon.addEventListener("click", e => {
+    e.preventDefault();
+    
 
-const desARR = arr.sort((a, b) => b - a);
-console.log(desARR);
+});
+
+
+

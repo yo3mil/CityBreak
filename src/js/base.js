@@ -1,7 +1,8 @@
 
 
 export const elements = {
-    mainDisplay: document.querySelector('.circle__data')
+    mainDisplay: document.querySelector('.circle__data'),
+    listIcon: document.querySelector('.listBtn')
     
 };
 const elementStrings = {
@@ -24,7 +25,17 @@ export const clearLoader = () => {
     }
 };
 
+// numArray.sort((a, b) => a - b); // For ascending sort
+// numArray.sort((a, b) => b - a); // For descending sort
 
+// const arr = [2, 1, 3, 5, 4];
+// console.log(arr);
+
+// const ascARR = arr.sort((a, b) => a - b);
+// console.log(ascARR);
+
+// const desARR = arr.sort((a, b) => b - a);
+// console.log(desARR);
 
 
 
