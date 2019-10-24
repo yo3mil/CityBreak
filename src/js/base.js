@@ -2,7 +2,12 @@
 
 export const elements = {
     mainDisplay: document.querySelector('.circle__data'),
-    listIcon: document.querySelector('.listBtn')
+    listIcon: document.querySelector('.listBtn'),
+    infoIcon: document.querySelector('.infoBtn'),
+    title: document.querySelector('.header'),
+    mainSection: document.querySelector('.landing'),
+    listSection: document.querySelector('.list'),
+    infoSection: document.querySelector('.info')
     
 };
 const elementStrings = {

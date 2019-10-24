@@ -41,27 +41,30 @@ window.addEventListener("load", () => {
     if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
             cords = [position.coords.longitude, position.coords.latitude];
-            
+            // function call 
             onLoad();
-            
         });
     } else {
-        alert('Cant access location');
+        alert('Cant access the location');
     }
-    
 });
 
 ////////////////////////////////////////////////////////////////////////////////
 // List view CONTROLLER
-const list = async () => {
-
-
+const list =  () => {
+    // prepare UI for changes
+    view.listView();
+    //render list
 };
 base.elements.listIcon.addEventListener("click", e => {
     e.preventDefault();
-    
-
+    list();
 });
-
+////////////////////////////////////////////////////////////////////////////////
+// info view CONTROLLER
+base.elements.infoIcon.addEventListener("click", e => {
+    e.preventDefault();
+    view.infoView();
+});
 
 

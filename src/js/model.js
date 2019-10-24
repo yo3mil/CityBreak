@@ -4,10 +4,20 @@ export class Search {
     constructor(cords) {
         this.cords = cords;
     }
-    
+
     async getResults() {
+        
         try {
-            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${this.cords[1]}&lon=${this.cords[0]}&APPID=1b14cf364521340ececa5ed3a758bd5a`;
+            let place, APIkey;
+            APIkey = `1b14cf364521340ececa5ed3a758bd5a`;
+            
+            if(this.cords.constructor === Array) {
+                place = `lat=${this.cords[1]}&lon=${this.cords[0]}`;
+            } else {
+                place = `q=${cords}`;
+            }
+            
+            const api = `https://api.openweathermap.org/data/2.5/weather?${place}&APPID=${APIkey}`;
             
             await fetch(api)
             .then(response => {
