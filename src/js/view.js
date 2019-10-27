@@ -7,8 +7,8 @@ const calculateTemp = temp => {
 };
 
 // clears main display
-export const clearFields = () => {
-    elements.mainDisplay.innerHTML = '';
+export const clearFields = (element) => {
+    element.innerHTML = '';
 };
 // render current temp on load
 export const renderCurrent = (result) => {
@@ -45,5 +45,18 @@ export const infoView  = () => {
 
 // home button click
 export const homeView  = () => {
-    
+    elements.mainSection.style.setProperty('display', 'flex');      
+    elements.infoSection.style.display = "none";
+    elements.listSection.style.display = "none";
+    elements.title.classList.remove("list-style");
+};
+
+export const renderList = (result) => {
+    const html = `
+        <li class="list__item">
+            <div class="list__item-temp">${calculateTemp(result.main.temp)}°C</div>
+            <div class="list__item-location"><a href="#"></a>${result.name}, ${result.sys.country}</div>
+        </li>
+    `;
+    elements.listElement.insertAdjacentHTML('beforeend', html);
 };

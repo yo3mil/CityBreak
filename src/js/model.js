@@ -13,8 +13,9 @@ export class Search {
             
             if(this.cords.constructor === Array) {
                 place = `lat=${this.cords[1]}&lon=${this.cords[0]}`;
-            } else {
-                place = `q=${cords}`;
+                
+            } else  {
+                place = `q=${this.cords}`;
             }
             
             const api = `https://api.openweathermap.org/data/2.5/weather?${place}&APPID=${APIkey}`;
@@ -37,19 +38,7 @@ export class Search {
 
 // CAPITALS LIST
 
-export const capitals = ['Tirana', 'Vienna', 'Minsk', 'Brussels', 'Sarajevo', 'Sofia', 'Sofia', 'Zagreb', 'Nicosia', 'Prague', 'Copenhagen', 'Tallinn', 'Helsinki', 'Paris', 'Berlin', 'Athens', 'Budapest', 'Reykjavik', 'Dublin', 'Rome', 'Pristina', 'Riga', 'Vilnius', 'Skopje', 'Valletta', 'Amsterdam', 'Oslo', 'Warsaw', 'Lisbon', 'Bucharest', 'Belgrade', 'Moscow', 'Bratislava', 'Ljubliana', 'Madrit', 'Stockholm', 'Bern', 'Kiev', 'London']
+export const capitals = ['Tirana', 'Vienna', 'Minsk', 'Brussels', 'Sarajevo', 'Sofia', 'Zagreb', 'Prague', 'Copenhagen', 'Tallinn', 'Helsinki', 'Paris', 'Berlin', 'Athens', 'Budapest', 'Reykjavik', 'Dublin', 'Rome', 'Riga', 'Vilnius', 'Skopje', 'Valletta', 'Amsterdam', 'Oslo', 'Warsaw', 'Lisbon', 'Bucharest', 'Belgrade', 'Moscow', 'Bratislava', 'Stockholm', 'Bern', 'Kiev', 'London']
 
 
 
-
-
-
-
-// const renderTemp = data => {
-//     let convert = data.main.temp - 273.15;
-//     const markup = `
-//         <p>${convert}</p>
-//     `;
-
-//     elements.temp.insertAdjacentHTML('afterbegin', markup);
-// }

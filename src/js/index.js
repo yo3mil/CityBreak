@@ -16,10 +16,8 @@ const onLoad = async () => {
         state.current = new model.Search(cords);
 
         // prepare ui for changes
-        view.clearFields();
+        view.clearFields(base.elements.mainDisplay);
         base.renderLoader(base.elements.mainDisplay);
-
-
         try {
             // call method to get data in nested object
             await state.current.getResults();
@@ -41,6 +39,7 @@ window.addEventListener("load", () => {
     if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
             cords = [position.coords.longitude, position.coords.latitude];
+            
             // function call 
             onLoad();
         });
@@ -51,11 +50,29 @@ window.addEventListener("load", () => {
 
 ////////////////////////////////////////////////////////////////////////////////
 // List view CONTROLLER
-const list =  () => {
+const list =  async ()  => {
     // prepare UI for changes
     view.listView();
-    //render list
+    view.clearFields(base.elements.listElement);
+
+    // render list
+    state.list = [];
+    
+    for (var i = 0;  i < model.capitals.length; i++){
+        state.list.push(new model.Search(model.capitals[i]));
+    };
+    
+    for (var i = 0; i < state.list.length; i++) {
+        try {
+            await state.list[i].getResults();
+        } catch {
+            alert('something went wrong with the list!');
+            console.log(error);
+        }
+        view.renderList(state.list[i].result);
+    }
 };
+
 base.elements.listIcon.addEventListener("click", e => {
     e.preventDefault();
     list();
@@ -67,4 +84,11 @@ base.elements.infoIcon.addEventListener("click", e => {
     view.infoView();
 });
 
+//////////////////////////////////////////////////////////////////////////////////
+// home btn
 
+base.elements.body.addEventListener("click", e => {
+    if(e.target.matches('#home')) {
+        view.homeView();
+    }
+});

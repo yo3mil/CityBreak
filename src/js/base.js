@@ -7,7 +7,9 @@ export const elements = {
     title: document.querySelector('.header'),
     mainSection: document.querySelector('.landing'),
     listSection: document.querySelector('.list'),
-    infoSection: document.querySelector('.info')
+    infoSection: document.querySelector('.info'),
+    listElement: document.querySelector('.list__all'),
+    body: document.querySelector('.body')
     
 };
 const elementStrings = {
