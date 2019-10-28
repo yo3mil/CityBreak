@@ -5,16 +5,18 @@
     width: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    
     align-items: center;
+    animation: fadeIn .5s;
 }
 
 .landing {
     //display: none;
+    justify-content: center;
 }
 .info {
     display: none;
-
+    justify-content: center;
     &__text {
         margin-bottom: 3rem;
         margin-top: 4rem;
@@ -40,4 +42,5 @@
 
 .list {
     display: none;
+    margin-top: -8rem;
 }

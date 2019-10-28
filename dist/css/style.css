@@ -12,6 +12,28 @@
     height: 116px;
     opacity: 0; } }
 
+@keyframes bump {
+  0% {
+    transform: scale(1); }
+  30% {
+    transform: scale(1.1); }
+  100% {
+    transform: scale(1); } }
+
+@keyframes fadeIn {
+  0% {
+    display: none;
+    opacity: 0; }
+  100% {
+    display: flex;
+    opacity: 1; } }
+
+@keyframes minify {
+  0% {
+    transform: scale(1); }
+  100% {
+    transform: scale(0.7); } }
+
 *,
 *::after,
 *::before {
@@ -115,6 +137,8 @@ p {
     width: 3rem;
     fill: #f0f0f0;
     padding: 0 .6rem; }
+    .circle__icon:active {
+      animation: minify .1s forwards; }
   .circle__data {
     display: flex;
     flex-direction: column;
@@ -124,10 +148,12 @@ p {
       font-size: 1.2rem;
       margin-bottom: -1rem; }
     .circle__data-temp {
-      font-size: 7rem; }
+      font-size: 7rem;
+      animation: bump .5s; }
     .circle__data-location {
       font-size: 1.8rem;
-      margin-top: -1.5rem; }
+      margin-top: -1.5rem;
+      cursor: pointer; }
 
 .nav {
   width: 75%;
@@ -149,6 +175,7 @@ p {
   margin-left: auto; }
 
 .home-btn {
+  cursor: pointer;
   flex: 0 0 20%;
   text-transform: uppercase;
   display: flex;
@@ -162,6 +189,7 @@ p {
     fill: #f0f0f0; }
 
 .list {
+  animation: fadeIn 1s;
   flex: 1;
   height: 100%;
   min-height: 80vh; }
@@ -181,7 +209,10 @@ p {
     backdrop-filter: blur(2px);
     display: flex;
     padding: 0 4rem;
-    align-items: center; }
+    align-items: center;
+    cursor: pointer; }
+    .list__item:active {
+      animation: minify .3s forwards; }
     .list__item-temp {
       flex: 0 0 30%;
       font-size: 2rem; }
@@ -217,7 +248,8 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: all 1s; }
+  transition: all 1s;
+  cursor: pointer; }
 
 .list-style {
   transform: scale(0.5) translate(0, -75%); }
@@ -229,11 +261,15 @@ p {
   width: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center; }
+  align-items: center;
+  animation: fadeIn .5s; }
+
+.landing {
+  justify-content: center; }
 
 .info {
-  display: none; }
+  display: none;
+  justify-content: center; }
   .info__text {
     margin-bottom: 3rem;
     margin-top: 4rem;
@@ -253,4 +289,5 @@ p {
       font-size: 1.8rem; }
 
 .list {
-  display: none; }
+  display: none;
+  margin-top: -8rem; }

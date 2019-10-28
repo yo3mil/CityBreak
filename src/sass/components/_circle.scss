@@ -18,22 +18,30 @@
         width: 3rem;
         fill: #f0f0f0;
         padding:0 .6rem;
+
+        &:active {
+            animation: minify .1s forwards;
+        }
     }
     &__data {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        
         &-header {
             font-size: 1.2rem;
             margin-bottom: -1rem;
         }
         &-temp {
             font-size: 7rem;
+            animation: bump .5s;
+            
         }
         &-location {
             font-size: 1.8rem;
             margin-top: -1.5rem;
+            cursor: pointer;
         }
     }
 

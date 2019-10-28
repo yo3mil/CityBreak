@@ -1,5 +1,5 @@
 .list {
-
+    animation: fadeIn 1s;
     flex: 1;
     height: 100%;
     min-height: 80vh;
@@ -25,7 +25,11 @@
         display: flex;
         padding: 0 4rem;
         align-items: center;
-        
+        cursor: pointer;
+        &:active {
+            animation: minify .3s forwards;
+        }
+       // animation: bump 1s;
         &-temp {
             flex: 0 0 30%;
             font-size: 2rem;
