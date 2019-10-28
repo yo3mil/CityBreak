@@ -40,5 +40,18 @@ export class Search {
 
 export const capitals = ['Tirana', 'Vienna', 'Minsk', 'Brussels', 'Sarajevo', 'Sofia', 'Zagreb', 'Prague', 'Copenhagen', 'Tallinn', 'Helsinki', 'Paris', 'Berlin', 'Athens', 'Budapest', 'Reykjavik', 'Dublin', 'Rome', 'Riga', 'Vilnius', 'Skopje', 'Valletta', 'Amsterdam', 'Oslo', 'Warsaw', 'Lisbon', 'Bucharest', 'Belgrade', 'Moscow', 'Bratislava', 'Stockholm', 'Bern', 'Kiev', 'London']
 
+// puts all objects inside the array by temperature  (lowest to highest)
+export const sortObjects = (array) => {
+    const desARR = array.sort((a, b) => {
+    
+        if (a.result.main.temp > b.result.main.temp) {
+            return 1;
+        } else {
+            return -1;
+        }
 
+    });
+    array = desARR.slice(0);
+    
+};
 

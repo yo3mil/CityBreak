@@ -2,7 +2,8 @@ import { elements } from './base';
 
 // change results to celcius
 const calculateTemp = temp => {
-    const celcius = Math.round(temp - 273.15);
+    const celcius = Math.round((temp - 273.15)*10) / 10;
+    
     return celcius;
 };
 
@@ -14,12 +15,12 @@ export const clearFields = (element) => {
 export const renderCurrent = (result) => {
     const html = `
         <div class="circle__data-header">
-        Current:
+        
         </div>
         <div class="circle__data-temp">
-        ${calculateTemp(result.main.temp)}°C
+        ${calculateTemp(result.main.temp)}°<span class="celcius">C</span>
         </div>
-        <div class="circle__data-location">
+        <div class="circle__data-location" onclick="window.open('http://www.google.com/search?q=${result.name}','mywindow');">
         ${result.name}, ${result.sys.country}
         </div>
     `;
@@ -39,6 +40,7 @@ export const listView  = () => {
 // tranform UI to info view
 export const infoView  = () => {
     // remove and add
+    
     elements.mainSection.style.display = "none";
     elements.infoSection.style.setProperty('display', 'flex');
 };
@@ -53,9 +55,9 @@ export const homeView  = () => {
 
 export const renderList = (result) => {
     const html = `
-        <li class="list__item">
+        <li class="list__item" onclick="window.open('http://www.google.com/search?q=${result.name}','mywindow');">
             <div class="list__item-temp">${calculateTemp(result.main.temp)}°C</div>
-            <div class="list__item-location"><a href="#"></a>${result.name}, ${result.sys.country}</div>
+            <div class="list__item-location">${result.name}, ${result.sys.country}</div>
         </li>
     `;
     elements.listElement.insertAdjacentHTML('beforeend', html);
