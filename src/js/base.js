@@ -12,15 +12,14 @@ export const elements = {
     body: document.querySelector('.body'),
     plus: document.querySelector('.icon-plus'),
     minus: document.querySelector('.icon-minus')
-    
 };
+
 const elementStrings = {
     loader: 'lds-ripple'
 };
 
 
 // LOADER
-
 export const renderLoader = parent => {
     const loader = `
         <div class="${elementStrings.loader}"><div></div><div></div></div>

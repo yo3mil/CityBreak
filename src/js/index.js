@@ -9,33 +9,32 @@ const state = {};
 ///////////////////////////////////////////////////////////////////
 // ON LOAD CONTROLLER
 let cords;
+
 const onLoad = async () => {
+    // prepare ui for changes
+    view.clearFields(base.elements.mainDisplay);
+    base.renderLoader(base.elements.mainDisplay);
 
     if(cords) {
         // new object added to the state
         state.current = new model.Search(cords);
 
-        // prepare ui for changes
-        view.clearFields(base.elements.mainDisplay);
-        base.renderLoader(base.elements.mainDisplay);
+        
         try {
             // call method to get data in nested object
             await state.current.getResults();
-            
-           
             // render the results
             base.clearLoader();
-
             view.renderCurrent(state.current.result);
-            //console.log(state);
+            
         } catch(error) {
             alert('something went wrong with the search !');
             console.log(error); 
         }
     }
 };
+
 const list =  async ()  => {
-    
     // create a list
     state.list = [];
     
@@ -46,13 +45,11 @@ const list =  async ()  => {
     for (let i = 0; i < state.list.length; i++) {
         try {
             await state.list[i].getResults();
-            
         } catch {
-            alert('something went wrong with the list!');
+            alert('something went wrong an element in the list!');
             console.log(error);
         }
-        
-    }
+    };
     // push current location to the list as well
     state.list.push(state.current);
     // sort objects
@@ -60,23 +57,23 @@ const list =  async ()  => {
 };
 
 
-// get  current temp and array of capitals on load
+// ON LOAD listener
 window.addEventListener("load", () => {
 
     // checks if location feature is allowed in the browser
     if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
             cords = [position.coords.longitude, position.coords.latitude];
-            // function call 
+            
             onLoad();
+            
+            list();
         });
     } else {
         alert('Cant access the location');
     }
 
-    // make an array of capitals
 
-    list();
     
 });
 
@@ -88,11 +85,11 @@ const listViewRender = () => {
     // prepare UI for changes
     view.listView();
     view.clearFields(base.elements.listElement);
+
     // call function again after a dalay if results are not fetched yet
-    if(state.list[(state.list.length - 1)].result) {
+    if(state.list[(model.capitals.length - 1)].result) {
         base.clearLoader();
         listRenderLoop();
-        
     } else {
         setTimeout(() => {
             listViewRender();
@@ -135,11 +132,28 @@ base.elements.body.addEventListener("click", e => {
 
 /////////////
 // + PLUS +
-const addTemp = () => {
-    // prepare UI for changes
+
+const plusBtn = () => {
     view.clearFields(base.elements.mainDisplay);
     base.renderLoader(base.elements.mainDisplay);
+    try {
+        if (state.current.result.name === state.list[(state.list.length - 1)].result.name) {
+            alert(`Woah! ${state.current.result.name} is the warmest capital city in Europe right now!`);
+            base.clearLoader();
+            view.renderCurrent(state.list[(state.list.length - 1)].result);
+        } else if (state.list.length > 30) {
+            addTemp();
+        }
+    } catch(error) {
+        console.log(error);
+        // if data hasnt loaded yet
+        alert('Loading, please try again.');
+        base.clearLoader();
+        view.renderCurrent(state.current.result);
+    }
+};
 
+const addTemp = () => {
     //find next highest in the array
     for (let i = 0; i < state.list.length; i++) {
         if(state.list[i].result.main.temp > state.current.result.main.temp) {
@@ -151,23 +165,32 @@ const addTemp = () => {
         }
     }
 };
-base.elements.plus.addEventListener("click", e => {
-    
-    if (state.current.result.name == state.list[(state.list.length - 1)].result.name) {
-        alert(`Woah! ${state.current.result.name} is the warmest capital city in Europe right now!`);
-        
-    } else if (state.list.length > 30) {
-        addTemp();
-    }
-});
+
+base.elements.plus.addEventListener("click", plusBtn);
 
 /////////////
 // - MINUS -
-const subTemp = () => {
-    // prepare UI for changes
+
+const minusBtn = () => {
     view.clearFields(base.elements.mainDisplay);
     base.renderLoader(base.elements.mainDisplay);
-    
+    try {
+        if (state.current.result.name === state.list[0].result.name) {
+            alert(`Woah! ${state.current.result.name} is the coldest capital city in Europe right now!`);
+            base.clearLoader();
+            view.renderCurrent(state.list[0].result);
+        } else if (state.list.length > 30) {
+            subTemp();
+        }
+    } catch(error) {
+        console.log(error);
+        alert('Loading, please try again.');
+        base.clearLoader();
+        view.renderCurrent(state.current.result);
+    }
+};
+
+const subTemp = () => {
     // Find next lowest in the array (loop from the back )
     for (let i = (state.list.length - 1); i >= 0; i--) {
         if (state.list[i].result.main.temp < state.current.result.main.temp) {
@@ -179,11 +202,4 @@ const subTemp = () => {
         }
     }
 };
-base.elements.minus.addEventListener("click", e => {
-    if (state.current.result.name == state.list[0].result.name) {
-        alert(`Woah! ${state.current.result.name} is the coldest capital city in Europe right now!`);
-        
-    } else if (state.list.length > 30) {
-        subTemp();
-    }
-});
+base.elements.minus.addEventListener("click", minusBtn);
