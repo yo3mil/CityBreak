@@ -1,6 +1,6 @@
 # CityBreak
 
-Little wheather widget in vanilla JavaScript, using https://openweathermap.org/ API.
+Little weather widget in vanilla JavaScript, using https://openweathermap.org/ API.
 
 ![Invoicer](https://i.ibb.co/j31MNHn/citybreak-SS.png)
 
